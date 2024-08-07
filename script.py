@@ -1,5 +1,5 @@
 import pandas as pd
-from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
+from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, SystemMessage
 
 # Carregar os dados
 data = pd.read_csv('data/weather_2000.csv')
@@ -126,7 +126,7 @@ class MediaTemperatura(BaseModel):
 llm_with_tools = llm.bind_tools([RecordeMaximoTemperatura, RecordeMinimoTemperatura, MediaTemperatura])
 
 messages = [
-    ("system", ""),
+    SystemMessage(''),
 ]
 
 while True:
